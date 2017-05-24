@@ -12,6 +12,18 @@ seed = [
   [0,0,0,0,0,0,0,0,0]
 ]
 
+tenth_generation = [
+  [0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,1,0,0,0],
+  [0,0,0,1,0,1,0,0,0],
+  [0,0,0,0,1,1,0,0,0],
+  [0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0],
+  [0,0,0,0,0,0,0,0,0]
+]
+
 # [2,2]
 
 def tick(seed)
@@ -45,14 +57,6 @@ def tick(seed)
         top_right
       ].compact.reduce(:+)
 
-      #live && count < 2       -> dead under_pop
-      #live && count > 3       -> dead over_pop
-      #2 > count < 3
-
-      #live && count == 2 || 3 -> live
-      #dead && count == 3      -> live
-      #else -> dead
-
       if living && [2,3].include?(count)
         1 # live
       elsif !living && count == 3
@@ -65,6 +69,12 @@ def tick(seed)
   end
 end
 
-binding.pry
-puts "yolo"
+test_seed = seed
+
+10.times do |time|
+  test_seed = tick(test_seed)
+end
+
+puts "It was #{test_seed == tenth_generation}"
+
 
