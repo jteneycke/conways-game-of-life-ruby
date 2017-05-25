@@ -24,8 +24,6 @@ tenth_generation = [
   [0,0,0,0,0,0,0,0,0]
 ]
 
-# [2,2]
-
 def tick(seed)
   seed.each_with_index.map do |row, row_index|
     row.each_with_index.map do |column, column_index|
@@ -36,13 +34,13 @@ def tick(seed)
                  false
                end
 
-      top_center  = seed[row_index - 1][column_index] rescue nil
+      top_center  = seed[row_index - 1][column_index]     rescue nil
       left        = seed[row_index    ][column_index - 1] rescue nil
       bottom_left = seed[row_index + 1][column_index - 1] rescue nil
       top_left    = seed[row_index - 1][column_index - 1] rescue nil
 
       right         = seed[row_index    ][column_index + 1] rescue nil
-      bottom_center = seed[row_index + 1][column_index] rescue nil
+      bottom_center = seed[row_index + 1][column_index]     rescue nil
       bottom_right  = seed[row_index + 1][column_index + 1] rescue nil
       top_right     = seed[row_index - 1][column_index + 1] rescue nil
 
